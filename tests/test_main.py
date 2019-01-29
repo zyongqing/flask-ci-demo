@@ -7,8 +7,12 @@ class MainTestCase(TestCase):
 
     def test_index_success(self):
         response = self.client.get(url_for('main.index'))
-        self.assertTrue(response.status_code, 200)
-        self.assertTrue(response.data, 'hello world')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, b'hello world')
+
+    def test_index_failed(self):
+        response = self.client.get('undefined_page')
+        self.assertEqual(response.status_code, 500)
 
 
 if __name__ == '__main__':

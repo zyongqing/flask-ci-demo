@@ -10,7 +10,7 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    SERVER_NAME = ''
+    DEBUG = True
 
 
 config = {
