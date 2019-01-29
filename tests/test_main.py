@@ -12,7 +12,7 @@ class MainTestCase(TestCase):
 
     def test_index_failed(self):
         response = self.client.get('undefined_page')
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 404)
 
 
 if __name__ == '__main__':
