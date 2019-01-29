@@ -1,0 +1,11 @@
+app:
+  build: .
+  dockerfile: ./docker/Releasefile
+  ports:
+    - "5000:5000"
+
+test:
+  build: .
+  dockerfile: ./docker/Testingfile
+  ports:
+    - "5000:5000"
