@@ -1,5 +1,6 @@
 from flask import Flask
 from config import config
+from .extensions import celery
 
 
 def _init_errors(app):
@@ -17,7 +18,7 @@ def _init_errors(app):
 
 
 def _init_extensions(app):
-    pass
+    celery.init_app(app)
 
 
 def _register_blueprints(app):
