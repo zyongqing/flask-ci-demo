@@ -1,5 +1,5 @@
 [![Travis](https://travis-ci.org/zyongqing/flask-ci-demo.svg?branch=master)](https://travis-ci.org/zyongqing/flask-ci-demo)
-[![](https://img.shields.io/github/license/zyongqing/flask-ci-demo.svg)]()
+[![](https://img.shields.io/github/license/zyongqing/flask-ci-demo.svg?style=flat)]()
 
 # FLASK-CI-DEMO
 
@@ -15,7 +15,6 @@ make job-dev       # run celery worker in debug mode
 make test          # run all unittest
 make cov           # run code coverage
 make shell         # run flask shell
-make pip-lock      # export pipenv info into requirements
 ```
 
 ## Docker Local Build
@@ -45,8 +44,6 @@ docker-compose -f docker-compose_release.yml down # stop & clean entire services
 
 
 ## Docker Repository
-[![](https://img.shields.io/badge/zyongqing%2Fflask--ci--demo--web-latest-green.svg)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-web)
-[![](https://images.microbadger.com/badges/image/zyongqing/flask-ci-demo-web.svg)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-web)
+[![](https://img.shields.io/badge/zyongqing%2Fflask--ci--demo--web-latest-green.svg?style=flat)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-web)
 
-[![](https://img.shields.io/badge/zyongqing%2Fflask--ci--demo--app-latest-green.svg)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-web)
-[![](https://images.microbadger.com/badges/image/zyongqing/flask-ci-demo-app.svg)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-app)
+[![](https://img.shields.io/badge/zyongqing%2Fflask--ci--demo--app-latest-green.svg?style=flat)](https://cloud.docker.com/repository/docker/zyongqing/flask-ci-demo-web)
