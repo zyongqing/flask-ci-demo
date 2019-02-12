@@ -15,6 +15,9 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
+    # CELERY SETTING
+    CELERY_BROKER_URL = 'sqla+sqlite:///:memory:'
+    CELERY_RESULT_BACKEND = 'db+sqlite:///:memory:'
 
 
 config = {
