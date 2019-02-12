@@ -4,11 +4,13 @@ ENV FLASK_APP="manage.py"
 ENV FLASK_ENV="development"
 
 COPY . /app
+
 WORKDIR /app
 
 RUN mkdir -p instance && \
-    cp docker/app/conf/flask/config.py instance
+    cp docker/test/conf/flask/config.py instance
 
-RUN pip install -r requirements.txt
-RUN pip install -r requirements-dev.txt
-CMD ["flask", "cov"]
+RUN pip install -i https://pypi.douban.com/simple/ --upgrade pipenv && \
+    pipenv install --dev
+
+CMD ["pipenv", "run", "flask", "cov"]

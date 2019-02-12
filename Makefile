@@ -25,6 +25,6 @@ cov:
 shell:
 	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask shell
 
-pip-lock:
-	pipenv lock --requirements > requirements.txt
-	pipenv lock --requirements --dev > requirements-dev.txt
+# pip-lock:
+# 	pipenv lock --requirements > requirements.txt
+# 	pipenv lock --requirements --dev > requirements-dev.txt
