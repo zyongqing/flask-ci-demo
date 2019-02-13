@@ -7,6 +7,6 @@ python:
 
 services: docker
 
-install: docker-compose build test
+install: docker-compose build test-small
 
-script: docker-compose run test
+script: docker-compose run test-small

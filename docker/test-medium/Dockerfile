@@ -8,9 +8,9 @@ COPY . /app
 WORKDIR /app
 
 RUN mkdir -p instance && \
-    cp docker/test/conf/flask/config.py instance
+    cp docker/test-medium/conf/flask/config.py instance
 
 RUN pip install -i https://pypi.douban.com/simple/ --upgrade pipenv && \
     pipenv install --dev
 
-CMD ["pipenv", "run", "flask", "cov"]
+CMD ["pipenv", "run", "flask", "cov", "medium"]

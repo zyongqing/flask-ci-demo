@@ -10,6 +10,8 @@ services:
       dockerfile: ./docker/web/Dockerfile
     ports:
       - "80:80"
+    depends_on:
+      - app
     links:
       - app
 
@@ -17,19 +19,42 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
+    depends_on:
+      - job
     links:
-      - redis
       - job
 
   job:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: celery -A manage.celery worker
+    command: pipenv run celery -A manage.celery worker
+    depends_on:
+      - redis
     links:
       - redis
 
-  test:
+  test-small:
     build:
       context: .
-      dockerfile: ./docker/test/Dockerfile
+      dockerfile: ./docker/test-small/Dockerfile
+
+  test-medium:
+    build:
+      context: .
+      dockerfile: ./docker/test-medium/Dockerfile
+    depends_on:
+      - job
+    links:
+      - job
+
+  test-large:
+    build:
+      context: .
+      dockerfile: ./docker/test-large/Dockerfile
+    depends_on:
+      - web
+    links:
+      - web
+    environment:
+      WEB_DOMAIN: web:80

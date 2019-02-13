@@ -1,4 +1,5 @@
 import os
+import click
 from app import create_app, celery
 
 app = create_app(os.getenv('FLASK_CONFIG', 'default'))
@@ -12,23 +13,25 @@ def make_shell_context():
 
 
 @app.cli.command()
-def test():
+@click.argument('level')
+def test(level):
     import unittest
     import sys
-    tests = unittest.TestLoader().discover('tests')
+    tests = unittest.TestLoader().discover('tests/%s' % level)
     ret = not unittest.TextTestRunner(verbosity=2).run(tests).wasSuccessful()
     sys.exit(ret)
 
 
 @app.cli.command()
-def cov():
+@click.argument('level')
+def cov(level):
     import unittest
     import coverage
     import os
     import sys
     cov = coverage.coverage(branch=True, include='app/*')
     cov.start()
-    tests = unittest.TestLoader().discover('tests')
+    tests = unittest.TestLoader().discover('tests/%s' % level)
     ret = not unittest.TextTestRunner(verbosity=2).run(tests).wasSuccessful()
     cov.stop()
     cov.save()

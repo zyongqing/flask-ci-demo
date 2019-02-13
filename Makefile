@@ -1,4 +1,4 @@
-.PHONY: app app-dev job job-dev test cov shell pip-lock
+.PHONY: app job test cov shell
 
 FLASK_APP_NAME='manage.py'
 
@@ -16,15 +16,31 @@ job:
 job-dev:
 	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='production' celery -A manage.celery worker -c 1 --loglevel=debug
 
-test:
-	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test
+test: test-small
 
-cov:
-	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask cov
+test-all: test-small test-medium test-large
+
+test-small:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test small
+
+test-medium:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test medium
+
+test-large:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test large
+
+cov: cov-small
+
+cov-all: cov-small cov-medium cov-large
+
+cov-small:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask cov small
+
+cov-medium:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask cov medium
+
+cov-large:
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask cov large
 
 shell:
 	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask shell
-
-# pip-lock:
-# 	pipenv lock --requirements > requirements.txt
-# 	pipenv lock --requirements --dev > requirements-dev.txt

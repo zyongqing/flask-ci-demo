@@ -8,17 +8,22 @@ services:
     image: zyongqing/flask-ci-demo-web:latest
     ports:
       - "80:80"
+    depends_on:
+      - app
     links:
       - app
 
   app:
     image: zyongqing/flask-ci-demo-app:latest
+    depends_on:
+      - job
     links:
-      - redis
       - job
 
   job:
     image: zyongqing/flask-ci-demo-app:latest
-    command: celery -A manage.celery worker
+    command: pipenv run celery -A manage.celery worker
+    depends_on:
+      - redis
     links:
       - redis

@@ -12,18 +12,28 @@ make app           # run flask app
 make job           # run celery worker
 make app-dev       # run flask app in debug mode
 make job-dev       # run celery worker in debug mode
-make test          # run all unittest
-make cov           # run code coverage
+make test          # run small test
+make test-all      # run all test
+make test-small    # run small test
+make test-medium   # run medium test
+make test-large    # run large test
+make cov           # run small code coverage
+make cov-all       # run all code coverage
+make cov-small     # run small test code coverage
+make cov-medium    # run medium code coverage
+make cov-large     # run large code coverage
 make shell         # run flask shell
 ```
 
 ## Docker Local Build
 
 ```bash
-docker-compose build       # build all service
-docker-compose build app   # build only flask app service
-docekr-compose build job   # build only celery service
-docker-compose build test  # build only test service
+docker-compose build              # build all service
+docker-compose build app          # build only flask app service
+docekr-compose build job          # build only celery service
+docker-compose build test-small   # build only small test service
+docker-compose build test-medium  # build only medium test service
+docker-compose build test-large   # build only large test service
 ```
 
 ## Docker Local Run
@@ -32,7 +42,9 @@ docker-compose build test  # build only test service
 docker-compose run -p 80:80 web       # run entire flask services
 docker-compose run -p 5000:5000 app   # run only flask app service
 docker-compose run job                # run only celery service
-docker-compose run test               # run only test service
+docker-compose run test-small         # run only small service
+docker-compose run test-medium        # run only medium service
+docker-compose run test-large         # run only large service
 ```
 
 ## Docker Release Run
