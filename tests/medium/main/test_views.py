@@ -1,5 +1,5 @@
-import unittest
 import re
+import unittest
 from flask import url_for
 from celery import states as TASK_STATES
 from celery.result import AsyncResult

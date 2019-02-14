@@ -27,7 +27,7 @@ test-medium:
 	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test medium
 
 test-large:
-	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' flask test large
+	FLASK_APP=$(FLASK_APP_NAME) FLASK_ENV='development' WEB_DOMAIN='localhost:5000' flask test large
 
 cov: cov-small
 

@@ -34,27 +34,45 @@ services:
     links:
       - redis
 
+  job-medium:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    command: sleep 5; pipenv run celery -A manage.celery worker
+    volumes:
+      - ./docker/test/conf/flask/config_medium.py:/app/instance/config.py:ro
+    depends_on:
+      - redis
+    links:
+      - redis
+
   test-small:
     build:
       context: .
-      dockerfile: ./docker/test-small/Dockerfile
+      dockerfile: ./docker/test/Dockerfile
 
   test-medium:
     build:
       context: .
-      dockerfile: ./docker/test-medium/Dockerfile
+      dockerfile: ./docker/test/Dockerfile
+    command: pipenv run flask cov medium
+    volumes:
+      - ./docker/test/conf/flask/config_medium.py:/app/instance/config.py:ro
     depends_on:
-      - job
+      - job-medium
     links:
-      - job
+      - job-medium
 
   test-large:
     build:
       context: .
-      dockerfile: ./docker/test-large/Dockerfile
+      dockerfile: ./docker/test/Dockerfile
+    command: pipenv run flask cov large
+    volumes:
+      - ./docker/test/conf/flask/config_large.py:/app/instance/config.py:ro
     depends_on:
       - web
     links:
       - web
     environment:
-      WEB_DOMAIN: web:80
+      WEB_DOMAIN: web
