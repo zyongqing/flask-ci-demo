@@ -15,10 +15,10 @@ class AddTaskTestCase(TestCase):
         self.assertEqual(result, expect)
 
     def test_add_str_number_failed(self):
-        x, y = '98', '99'
+        x, y = "98", "99"
         with self.assertRaises(Exception):
             add(x, y)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

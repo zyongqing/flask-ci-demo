@@ -7,5 +7,5 @@ def add(x, y):
     assert isinstance(x, (int, float))
     assert isinstance(y, (int, float))
     result = x + y
-    current_app.logger.info('%d + %d = %d' % (x, y, result))
+    current_app.logger.info("%d + %d = %d" % (x, y, result))
     return result

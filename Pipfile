@@ -7,6 +7,9 @@ verify_ssl = true
 coverage = "*"
 sqlalchemy = "*"
 requests = "*"
+pre-commit = "*"
+flake8 = "*"
+black = "*"
 
 [packages]
 flask = "*"
