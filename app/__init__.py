@@ -22,9 +22,11 @@ def _init_extensions(app):
 
 
 def _register_blueprints(app):
-    from .blueprints.main.views import bp
+    from .blueprints.main.views import bp as main_bp
+    from .blueprints.state.views import bp as state_bp
 
-    app.register_blueprint(bp, url_prefix="/main")
+    app.register_blueprint(main_bp, url_prefix="/main")
+    app.register_blueprint(state_bp, url_prefix="/-")
 
 
 def create_app(config_name):

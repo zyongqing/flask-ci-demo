@@ -1,3 +1,4 @@
+import time
 import re
 import unittest
 from flask import url_for
@@ -26,8 +27,9 @@ class AddRouteTestCase(TestCase):
         task_id = re.match(
             b"submit add job success ([\\w\\-]*) ", response.data
         ).groups()[0]
+
+        time.sleep(3)
         task = AsyncResult(task_id)
-        task.get(timeout=10)
         self.assertEqual(TASK_STATES.SUCCESS, task.status)
 
 

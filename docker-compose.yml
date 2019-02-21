@@ -38,7 +38,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: sleep 5; pipenv run celery -A manage.celery worker
+    command: pipenv run celery -A manage.celery worker
     volumes:
       - ./docker/test/conf/flask/config_medium.py:/app/instance/config.py:ro
     depends_on:
