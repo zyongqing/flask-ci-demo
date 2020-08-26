@@ -4,9 +4,9 @@
 
 # FLASK-CI-DEMO
 
-This is a demo project only for CI/CD training and practice.
+This is a CI/CD training and practice project.
 
-## Local Run
+## Local Command
 
 ```bash
 make app           # run flask app
@@ -26,7 +26,9 @@ make cov-large     # run large code coverage
 make shell         # run flask shell
 ```
 
-## Docker Local Build
+📌 please ensure celery workers have been configed and started properly while you run your medium or large tests.
+
+## Docker Build
 
 ```bash
 docker-compose build              # build all service
@@ -37,7 +39,7 @@ docker-compose build test-medium  # build only medium test service
 docker-compose build test-large   # build only large test service
 ```
 
-## Docker Local Run
+## Docker Run
 
 ```bash
 docker-compose run -p 80:80 web       # run entire flask services
@@ -48,7 +50,7 @@ docker-compose run test-medium        # run only medium service
 docker-compose run test-large         # run only large service
 ```
 
-## Docker Release Run
+## Docker Run (Product Version)
 
 ```bash
 docker-compose -f docker-compose_release.yml up   # start entire services

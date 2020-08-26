@@ -4,17 +4,20 @@ url = "https://pypi.douban.com/simple/"
 verify_ssl = true
 
 [dev-packages]
+black = "*"
+flake8 = "*"
 coverage = "*"
-sqlalchemy = "*"
 requests = "*"
 pre-commit = "*"
-flake8 = "*"
-black = "*"
 
 [packages]
 flask = "*"
 flask-celery-helper = "*"
 redis = "*"
+sqlalchemy = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
